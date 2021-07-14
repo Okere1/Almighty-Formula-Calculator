@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html> 
 <head>
+<meta charset=utf-8 />
 
 <title>Homepage </title>
 
@@ -10,24 +11,49 @@
 
 <body>
 
+<!-- Start of  External div -->
+<div id="external_div">
+
+<!-- Start of Internal div -->        
+<div id="Internal_div">
+
+<!-- Start of Caption div -->
+<div id="Caption_div">
 <p id="Mighty">ALMIGHTY FORMULA CALCULATOR</p>
 <br>
+</div>
+<!-- End of Caption div -->
 
+<!-- Start of Form div -->
+<div id="form_div">
 <form>
 
- Enter A Value: <input type="text" id="a" /><br><br>
- Enter B Value: <input type="text" id="b" /><br><br>
- Enter C Value: <input type="text" id="c" /><br><br>
+ Enter A Value: <input type="text" id="a" class="Input" /><br><br>
+ Enter B Value: <input type="text" id="b" class="Input" /><br><br>
+ Enter C Value: <input type="text" id="c" class="Input" /><br><br>
 
- <input type="button" onClick="Calculate()" Value="Calculate" />
+ <input type="button" onClick="Calculate()" Value="Calculate" id="Button" />
  
 
 </form>
 
+</div>
+<!-- End of Form div -->
+
+<!-- Start of Result div -->
+<div id="Result_div">
 <p>The Result is : <br>
  <span id = "result"></span>
 </p>
+</div>
+<!-- End of Result div -->
 
+</div>
+<!-- End of Internal div -->
+
+
+</div>
+<!-- End of  External div -->
 
 <script>
 
@@ -38,14 +64,45 @@ function Calculate()
         num1 = document.getElementById("a").value;
         num2 = document.getElementById("b").value;
         num3 = document.getElementById("c").value;
+        
+        let Check = ((num2**2)-4*num1*num3);
+        
 
-        root1 = (-num2 + Math.sqrt((num2**2)-4*num1*num3)) / (2 * num1);
-        root2 = (-num2 - Math.sqrt((num2**2)-4*num1*num3)) / (2 * num1);
+        //condition for real and different roots
+        if (Check>0)  
+        {
+           root1 = (-num2 + Math.sqrt((Check) / (2 * num1))).toFixed(2);
+           root2 = (-num2 - Math.sqrt((Check) / (2 * num1))).toFixed(2);
+           document.getElementById("result").innerHTML = root1 + " And" + " " + root2;
+        }
+        
+        // condition for real and equal roots
+        else if (Check==0) 
+         {
+           root1=root2= -num2/(2*num1);
+           
+           document.getElementById("result").innerHTML = root1 + "And "+ " " + root2;
+        }
+        
 
-        document.getElementById("result").innerHTML = (-num1+ Math.sqrt((num2**2)- (4 * num1 * num3)))/2*num1 + " And " + (-num1- Math.sqrt((num2**2)- (4 * num1 * num3)))/2*num1;
+        //If the roots are not real
+        else
+        {
+         /*
+         let Realpart = (-numb2/(2*num1)).toFixed(2);
+         let Imagpart = (Math.sqrt(Check)/(2*num1)).toFixed(2);
+        
+         document.getElementById("result").innerHTML = Realpart + "+ " + Imagpart + "i" +  "And" +  Realpart + "-" + Imagpart + "i";
+         */
+         
+         window.alert("The resultant roots are not real (try using 2, 9 and 5 to test it out)");
+
+        }
+
 }
-
+    
 
 </script>
+
 </body>
 </html>
