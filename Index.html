@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset=utf-8 />
+
+<title>Homepage3 </title>
+
+<link rel="stylesheet" href="Design.css">
+
+</head>
+
+<body>
+
+<p id="Mighty">ALMIGHTY FORMULA CALCULATOR</p>
+<br>
+
+<form>
+
+ Enter A Value: <input type="text" id="a" /><br><br>
+ Enter B Value: <input type="text" id="b" /><br><br>
+ Enter C Value: <input type="text" id="c" /><br><br>
+
+ <input type="button" onClick="Calculate()" Value="Calculate" />
+ 
+
+</form>
+
+<p>The Result is : <br>
+ <span id = "result"></span>
+</p>
+
+
+<script>
+
+var root1, root2;
+
+function Calculate()
+{
+        num1 = document.getElementById("a").value;
+        num2 = document.getElementById("b").value;
+        num3 = document.getElementById("c").value;
+
+        root1 = (-num2 + Math.sqrt((num2**2)-4*num1*num3)) / (2 * num1);
+        root2 = (-num2 - Math.sqrt((num2**2)-4*num1*num3)) / (2 * num1);
+
+        document.getElementById("result").innerHTML = (-num1+ Math.sqrt((num2**2)- (4 * num1 * num3)))/2*num1 + " And " + (-num1- Math.sqrt((num2**2)- (4 * num1 * num3)))/2*num1;
+}
+
+
+</script>
+</body>
+</html>
